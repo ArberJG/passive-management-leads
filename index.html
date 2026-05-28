@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Passive Management Leads</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Passive Management Leads</h1>
+        <p>Call leads one by one and move them through first, second, and third contact attempts.</p>
+      </div>
+      <div class="actions">
+        <span id="userEmail" class="user-email"></span>
+        <button id="exportProgress" type="button">Export Progress</button>
+        <button id="resetProgress" class="danger" type="button">Reset Progress</button>
+        <button id="signOut" class="secondary" type="button">Sign Out</button>
+      </div>
+    </header>
+
+    <section id="auth" class="auth-panel" hidden>
+      <div class="auth-box">
+        <h2>Sign In</h2>
+        <p>Use your Passive Management Leads account to access the shared CRM.</p>
+        <label>
+          <span>Email</span>
+          <input id="authEmail" type="email" autocomplete="email">
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="authPassword" type="password" autocomplete="current-password">
+        </label>
+        <div class="auth-actions">
+          <button id="signIn" type="button">Sign In</button>
+          <button id="signUp" class="secondary" type="button">Create Account</button>
+        </div>
+        <p id="authMessage" class="auth-message"></p>
+      </div>
+    </section>
+
+    <main id="app" class="layout" hidden>
+      <aside class="sidebar" aria-label="Lead call folders">
+        <button class="stage-tab active" data-stage="0" type="button">
+          <span>Not Called</span>
+          <strong id="count-0">0</strong>
+        </button>
+        <button class="stage-tab" data-stage="1" type="button">
+          <span>Called Once</span>
+          <strong id="count-1">0</strong>
+        </button>
+        <button class="stage-tab" data-stage="2" type="button">
+          <span>Called Twice</span>
+          <strong id="count-2">0</strong>
+        </button>
+        <button class="stage-tab" data-stage="3" type="button">
+          <span>Called Three Times</span>
+          <strong id="count-3">0</strong>
+        </button>
+        <button class="stage-tab dnc-tab" data-stage="4" type="button">
+          <span>Do Not Call Again</span>
+          <strong id="count-4">0</strong>
+        </button>
+        <button class="stage-tab prospect-tab" data-stage="5" type="button">
+          <span>Prospects</span>
+          <strong id="count-5">0</strong>
+        </button>
+      </aside>
+
+      <section class="workspace" aria-live="polite">
+        <div class="toolbar">
+          <label class="search">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Name, phone, email, city">
+          </label>
+          <div class="position">
+            <button id="previousLead" type="button" aria-label="Previous lead">Prev</button>
+            <span id="positionLabel">0 of 0</span>
+            <button id="nextLead" type="button" aria-label="Next lead">Next</button>
+          </div>
+        </div>
+
+        <article class="lead-card">
+          <div class="lead-heading">
+            <div>
+              <p id="stageLabel" class="eyebrow">Not Called</p>
+              <h2 id="fullName">Loading leads...</h2>
+            </div>
+            <div class="lead-id" id="leadId"></div>
+          </div>
+
+          <div class="lead-body">
+            <dl class="details">
+              <div>
+                <dt>Phone</dt>
+                <dd><a id="phone" href="#"></a></dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd><a id="email" href="#"></a></dd>
+              </div>
+              <div>
+                <dt>Address</dt>
+                <dd id="address"></dd>
+              </div>
+              <div>
+                <dt>Income</dt>
+                <dd id="income"></dd>
+              </div>
+              <div>
+                <dt>Net Worth</dt>
+                <dd id="netWorth"></dd>
+              </div>
+            </dl>
+
+            <label class="notes-panel">
+              <span>Notes</span>
+              <textarea id="notes" placeholder="Type notes here. This lead will move to Prospects automatically."></textarea>
+            </label>
+          </div>
+
+          <div class="call-actions">
+            <button id="moveBack" class="secondary" type="button">Move Back</button>
+            <button id="advanceLead" type="button">Move to Called Once</button>
+            <button id="doNotCall" class="do-not-call" type="button">DO NOT CALL AGAIN</button>
+            <button id="printLead" class="print-lead" type="button">Print Card</button>
+          </div>
+        </article>
+
+        <section class="list-panel">
+          <div class="list-heading">
+            <h3 id="listTitle">Not Called Leads</h3>
+            <span id="filteredCount">0 shown</span>
+          </div>
+          <div id="leadList" class="lead-list" role="list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
