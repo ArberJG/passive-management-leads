@@ -14,8 +14,10 @@ const STAGE_DO_NOT_CALL = 4;
 const STAGE_PROSPECT = 5;
 const PAGE_SIZE = 250;
 const NOTE_SAVE_DELAY = 350;
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_URL =
+  import.meta.env.VITE_SUPABASE_URL || "https://xnvcjuceveubusprllyn.supabase.co";
+const SUPABASE_ANON_KEY =
+  import.meta.env.VITE_SUPABASE_ANON_KEY || "sb_publishable_kdBzgM27IBSplLlsecSfWw_G8TWOa68";
 
 const supabase =
   SUPABASE_URL && SUPABASE_ANON_KEY
